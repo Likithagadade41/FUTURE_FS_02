@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>LeadFlow CRM</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      <div class="logo-icon">✦</div>
+
+      <div>
+        <h2>LeadFlow</h2>
+        <span>Mini CRM</span>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#" class="active">⌂ <span>Dashboard</span></a>
+
+      <a href="#leads">♧ <span>Leads</span></a>
+
+      <a href="#" id="addLeadNav">＋ <span>Add Lead</span></a>
+
+      <a href="#followups">▢ <span>Follow-ups</span></a>
+
+      <a href="#analytics">▥ <span>Analytics</span></a>
+
+      <a href="#calendar">▣ <span>Calendar</span></a>
+
+      <a href="#settings">⚙ <span>Settings</span></a>
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="workspace">
+       <img src="workspace.png" alt="Workspace" />
+       </div>
+
+      <div class="admin-profile">
+
+        <div class="avatar">L</div>
+
+        <div>
+          <strong id="sidebarAdminName">Admin User</strong>
+          <span id="sidebarWorkspaceName">LeadFlow CRM</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- Header -->
+    <section class="top-header">
+
+      <div>
+        <h1>Good morning, <span id="greetingName">Admin</span></h1>
+        <p>Here's what's happening with your leads today.</p>
+      </div>
+
+     <div class="date-box" id="currentDate"></div>
+
+    </section>
+
+
+    <!-- Statistics -->
+    <section class="stats-grid reveal glow-reveal">
+
+      <div class="stat-card">
+
+        <div class="stat-icon">👥</div>
+
+        <div>
+          <p>Total Leads</p>
+          <h2 id="totalLeads">0</h2>
+          <span class="growth">↑ 18% this month</span>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon green">♟</div>
+
+        <div>
+          <p>New Leads</p>
+          <h2 id="newLeads">0</h2>
+          <span class="growth">↑ 12% this month</span>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon orange">☎</div>
+
+        <div>
+          <p>Contacted</p>
+          <h2 id="contactedLeads">0</h2>
+          <span class="growth">↑ 8% this month</span>
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon purple">✓</div>
+
+        <div>
+          <p>Converted</p>
+          <h2 id="convertedLeads">0</h2>
+          <span class="growth">↑ 16% this month</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Overview -->
+    <section class="overview-grid">
+
+      <!-- Leads Chart -->
+      <div class="chart-card">
+
+        <div class="section-header">
+
+          <h2>Leads Overview</h2>
+
+          <select>
+            <option>Last 7 Days</option>
+            <option>Last 30 Days</option>
+          </select>
+
+        </div>
+
+        <div class="chart-container">
+          <div class="chart-bars" id="chartBars"></div>
+        </div>
+
+      </div>
+
+
+      <!-- Source Analytics -->
+      <div class="source-card">
+
+        <h2>Leads by Source</h2>
+
+        <div class="source-content">
+
+          <div class="donut" id="sourceDonut">
+
+            <div class="donut-center">
+              <strong id="sourceTotal">0</strong>
+              <span>Leads</span>
+            </div>
+
+          </div>
+
+
+          <div class="source-list" id="sourceList">
+            <p class="empty-source">No source data yet</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LEAD INTELLIGENCE -->
+    <section class="intelligence-section reveal glow-reveal glow-left">
+
+      <div class="intelligence-header">
+
+        <div>
+          <span class="intelligence-label">✦ LEAD INTELLIGENCE</span>
+
+          <h2>Smart insights for your business</h2>
+
+          <p>Real-time analysis based on your CRM activity.</p>
+        </div>
+
+
+        <div class="health-score">
+
+          <div class="score-circle">
+            <span id="healthScore">0</span>
+          </div>
+
+          <div>
+            <strong>Lead Health</strong>
+            <p>Overall pipeline score</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="insights-grid">
+
+        <div class="insight-card">
+
+          <div class="insight-icon">🔥</div>
+
+          <div>
+            <span>Priority Leads</span>
+            <h3 id="hotLeadCount">0 Hot Leads</h3>
+            <p>Leads requiring quick attention.</p>
+          </div>
+
+        </div>
+
+
+        <div class="insight-card">
+
+          <div class="insight-icon">📈</div>
+
+          <div>
+            <span>Best Source</span>
+            <h3 id="bestSource">No data yet</h3>
+            <p>Your strongest lead source.</p>
+          </div>
+
+        </div>
+
+
+        <div class="insight-card">
+
+          <div class="insight-icon">⚡</div>
+
+          <div>
+            <span>Conversion Rate</span>
+            <h3 id="conversionRate">0%</h3>
+            <p>Leads successfully converted.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="ai-insight-box">
+
+        <div class="ai-icon">✦</div>
+
+        <div>
+
+          <span>LEADFLOW INTELLIGENCE</span>
+
+          <p id="smartInsight">
+            Add leads to receive intelligent business insights.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LEADS TABLE -->
+    <section class="leads-section reveal glow-reveal" id="leads">
+
+      <div class="leads-header">
+
+        <h2>All Leads</h2>
+
+        <div class="lead-controls">
+
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="⌕ Search leads..."
+          />
+
+          <select id="statusFilter">
+
+            <option value="">All Status</option>
+            <option value="New">New</option>
+            <option value="Contacted">Contacted</option>
+            <option value="Converted">Converted</option>
+
+          </select>
+
+          <button id="addLeadBtn">＋ Add Lead</button>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Source</th>
+              <th>Status</th>
+              <th>Follow-up</th>
+              <th>Action</th>
+            </tr>
+
+          </thead>
+
+
+          <tbody id="leadsTable">
+            <!-- MongoDB leads appear here -->
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <p class="table-footer" id="leadCount">
+        Loading leads...
+      </p>
+
+    </section>
+
+
+    <!-- FOLLOW-UPS SECTION -->
+    <section class="followups-section reveal glow-reveal glow-left" id="followups">
+
+      <div class="leads-header">
+
+        <div>
+          <h2>Follow-ups</h2>
+          <p>Stay on top of your upcoming conversations.</p>
+        </div>
+
+      </div>
+
+
+      <div class="followup-grid">
+
+
+        <!-- Overdue -->
+        <div class="followup-card overdue-card">
+
+          <h3>🔴 Overdue</h3>
+
+          <div id="overdueFollowups">
+            <p class="empty-followup">
+              No overdue follow-ups 🎉
+            </p>
+          </div>
+
+        </div>
+
+
+        <!-- Today -->
+        <div class="followup-card today-card">
+
+          <h3>📅 Today</h3>
+
+          <div id="todayFollowups">
+            <p class="empty-followup">
+              No follow-ups for today
+            </p>
+          </div>
+
+        </div>
+
+
+        <!-- Upcoming -->
+        <div class="followup-card upcoming-card">
+
+          <h3>🟢 Upcoming</h3>
+
+          <div id="upcomingFollowups">
+            <p class="empty-followup">
+              No upcoming follow-ups
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ANALYTICS SECTION -->
+    <section class="analytics-section reveal glow-reveal" id="analytics">
+
+      <div class="analytics-header">
+
+        <div>
+          <h2>Analytics</h2>
+          <p>Track your lead performance and business growth.</p>
+        </div>
+
+      </div>
+
+
+      <div class="analytics-grid">
+
+
+        <!-- Total Leads -->
+        <div class="analytics-card">
+
+          <div class="analytics-icon">👥</div>
+
+          <div>
+            <span>Total Leads</span>
+            <h3 id="analyticsTotalLeads">0</h3>
+            <p>All leads in your CRM</p>
+          </div>
+
+        </div>
+
+
+        <!-- Conversion Rate -->
+        <div class="analytics-card">
+
+          <div class="analytics-icon">📈</div>
+
+          <div>
+            <span>Conversion Rate</span>
+            <h3 id="analyticsConversionRate">0%</h3>
+            <p>Leads successfully converted</p>
+          </div>
+
+        </div>
+
+
+        <!-- Best Source -->
+        <div class="analytics-card">
+
+          <div class="analytics-icon">⭐</div>
+
+          <div>
+            <span>Best Source</span>
+            <h3 id="analyticsBestSource">No data</h3>
+            <p>Your strongest lead source</p>
+          </div>
+
+        </div>
+
+
+        <!-- Pending Follow-ups -->
+        <div class="analytics-card">
+
+          <div class="analytics-icon">📅</div>
+
+          <div>
+            <span>Pending Follow-ups</span>
+            <h3 id="analyticsPendingFollowups">0</h3>
+            <p>Follow-ups requiring attention</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    
+
+
+<!-- ================= CALENDAR SECTION ================= -->
+<section class="calendar-section reveal glow-reveal glow-left" id="calendar">
+
+  <div class="analytics-header">
+    <div>
+      <h2>Follow-up Calendar</h2>
+      <p>View all scheduled follow-ups in one place.</p>
+    </div>
+  </div>
+
+  <div class="calendar-card">
+
+    <div class="calendar-top">
+      <button id="prevMonth">←</button>
+
+      <h3 id="calendarMonth">September 2026</h3>
+
+      <button id="nextMonth">→</button>
+    </div>
+
+    <div class="calendar-weekdays">
+      <span>Sun</span>
+      <span>Mon</span>
+      <span>Tue</span>
+      <span>Wed</span>
+      <span>Thu</span>
+      <span>Fri</span>
+      <span>Sat</span>
+    </div>
+
+    <div class="calendar-days" id="calendarDays">
+      <!-- Calendar generated by JavaScript -->
+    </div>
+
+  </div>
+
+
+  <div class="selected-date-card">
+
+    <h3 id="selectedDateTitle">
+      Select a date to view follow-ups
+    </h3>
+
+    <div id="calendarFollowups">
+      <p class="empty-followup">
+        Click a date to see scheduled follow-ups.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+<!-- ================= END CALENDAR SECTION ================= -->
+ 
+
+
+<!-- ================= SETTINGS SECTION ================= -->
+<section class="settings-section reveal glow-reveal" id="settings">
+
+  <div class="settings-header">
+    <h2>Settings</h2>
+    <p>Manage your LeadFlow CRM workspace settings.</p>
+  </div>
+
+  <div class="settings-card">
+
+    <h3>Workspace Settings</h3>
+
+    <div class="settings-form">
+
+      <div class="setting-group">
+        <label for="adminName">Admin Name</label>
+        <input
+          type="text"
+          id="adminName"
+          placeholder="Enter admin name"
+        />
+      </div>
+
+      <div class="setting-group">
+        <label for="workspaceName">Workspace Name</label>
+        <input
+          type="text"
+          id="workspaceName"
+          placeholder="Enter workspace name"
+        />
+      </div>
+
+      <button id="saveSettingsBtn">
+        Save Settings
+      </button>
+
+      <p id="settingsMessage"></p>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ================= END SETTINGS SECTION ================= -->
+
+
+</main>
+
+  <!-- ADD LEAD MODAL -->
+  <div class="modal" id="leadModal">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h2>Add New Lead</h2>
+
+        <button id="closeModal">×</button>
+
+      </div>
+
+
+      <form id="leadForm">
+
+        <input
+          type="text"
+          id="name"
+          placeholder="Full Name"
+          required
+        />
+
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Email Address"
+          required
+        />
+
+
+        <select id="source">
+
+          <option value="Website">Website</option>
+          <option value="Referral">Referral</option>
+          <option value="Social Media">Social Media</option>
+          <option value="Other">Other</option>
+
+        </select>
+
+
+        <select id="status">
+
+          <option value="New">New</option>
+          <option value="Contacted">Contacted</option>
+          <option value="Converted">Converted</option>
+
+        </select>
+
+
+        <textarea
+          id="notes"
+          placeholder="Add a follow-up note (optional)"
+        ></textarea>
+
+
+        <!-- Follow-up Date -->
+        <div class="form-group">
+
+          <label for="followUpDate">
+            Next Follow-up Date
+          </label>
+
+          <input
+            type="date"
+            id="followUpDate"
+          />
+
+        </div>
+
+
+        <button type="submit">
+          Save Lead
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <script src="app.js"></script>
+
+</body>
+</html>
